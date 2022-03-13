@@ -73,8 +73,29 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/hydra_bruteforce_ssh.png)
    
   - After we optained the credential, we can begin loging into the target using SSH.
-  - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
+```bash
+  $ ssh michael@192.168.1.110
+```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/SSH_login.png)
+
+  - `flag1.txt`: flag1{9bbcb33e11b80be759c4e844862482} `flag1.txt` hash value_
     - **Exploit Used**
+    - flag1 can easily discover using gobuster to discover the directories of the target1 sites. We used gobuster to done this job.
+```bash
+  $ gobuster dir -e -u http://192.168.1.110/ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
+```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/gobuster_command.png)
+## Command Explain
+
+| Options | Description                                   |
+|---------|-----------------------------------------------|
+| dir     | Used for directory/file bruteforcing.         |
+| -e      | Expanded mode, print full URLs.               |
+| -u      | (-username [string]) Username for Basic Auth. |
+| -w      | (-wordlist [wordlist]) Path to wordlist.      |
+
+   - we are now able go by the directory uncovered by gobuster and we eventually found the flag1 by just inspecting the service.html page.
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag1.png)
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_
   - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_

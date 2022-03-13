@@ -53,7 +53,6 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
   $ wpscan --url http://192.168.1.110/wordpress --rua --enumerate u
   ```
   - After running this command, we are can see that this wordpress site username is exposed to the public.
-  
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/Screenshot%20(234).png)  
 
   - Since the target1 is vulnerable to ssh-bruteforcing, we can use hydra to run the password list against the username to login, in this case we will try with michael

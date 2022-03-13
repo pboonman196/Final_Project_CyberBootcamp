@@ -6,14 +6,22 @@
 - Exploitation
 
 ### Exposed Services
-_TODO: Fill out the information below._
+Use nmap to enumerate the target and find the exposed service.
 
 Nmap scan results for each machine reveal the below services and OS details:
 
 ```bash
-$ nmap ... # TODO: Add command to Scan Target 1
+$ nmap -sV -sT -A 192.168.1.110
   # TODO: Insert scan output
 ```
+## Command Explain.
+
+|    Options    |                                            Description                                            |
+|:-------------:|:-------------------------------------------------------------------------------------------------:|
+| -sV           | Version Detection - Enables version detection                                                     |
+| -sT           | TCP Conncect Scan - TCP connect scan is the default TCP scan type when SYN scan is not an option. |
+| -A            | Aggressive Scan Options - This option enables additional advanced and aggressive options.         |
+| 192.168.1.110 | The IP address of the target machine.                                                             |
 
 This scan identifies the services below as potential points of entry:
 - Target 1

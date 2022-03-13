@@ -43,10 +43,16 @@ The following vulnerabilities were identified on target1 machine:
 | DOM-based XSS   | 6.0             | 80/HTTP | http://192.168.1.110/contact.php | XSS discoverd by running burpsuite scan shown possibility of XSS,  an attacker can tamper with the HTML response body an send it as client-side request(CSRF). |
 
 ### Exploitation
-_TODO: Fill out the details below. Include screenshots where possible._
 
-The Red Team was able to penetrate `Target 1` and retrieve the following confidential data:
+The target1 has been discovered to be vulnerable to exploit in a variety of ways, and our research team, as a red team, has successfully penetrated the target1, as illustrated in the step below.
+
 - Target 1
+  - Command used to enumerate user and check all vulnerable theme, outdated plugin on the wordpress site:
+  ```bash
+  $ wpscan --url http://192.168.1.110/wordpress --rua --enumerate u
+  ```
+  - After runnind this command, we are able to get the information of users from this site.
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/Screenshot%20(234).png)  
   - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
     - **Exploit Used**
       - _TODO: Identify the exploit used_

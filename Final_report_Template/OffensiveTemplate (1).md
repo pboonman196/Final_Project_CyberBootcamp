@@ -14,6 +14,8 @@ Nmap scan results for each machine reveal the below services and OS details:
 $ nmap -sV -sT -A 192.168.1.110
   # TODO: Insert scan output
 ```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/nmap_scan_result.png)
+
 ## Command Explain.
 
 |    Options    |                                            Description                                            |
@@ -25,18 +27,22 @@ $ nmap -sV -sT -A 192.168.1.110
 
 This scan identifies the services below as potential points of entry:
 - Target 1
-  - List of
-  - Exposed Services
+  - 22/TCP - SSH
+  - 80/TCP - HTTP
+  - 139/TCP - SMB
+  - 445/TCP - SMB
+  - 111/TCP - RPCBind
 
 _TODO: Fill out the list below. Include severity, and CVE numbers, if possible._
 
 The following vulnerabilities were identified on each target:
-- Target 1
-  - List of
-  - Critical
-  - Vulnerabilities
 
-_TODO: Include vulnerability scan results to prove the identified vulnerabilities._
+| Vulnerabilities | Critical rating | Port    | Version/Website Page             | Description                                                                                                                                                    |
+|-----------------|-----------------|---------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CVE-2015-5600   | 8.5             | 22/SSH  | OpenSSH 6.7p1 Debian             | Remote attacker can conduct brute-force  attacks or cause a denial of service                                                                                  |
+| CVE-2021-44790  | 7.5             | 80/HTTP | Apache 2.4.10 Debian             | A carefully crafted body can cause a buffer overflow in the  mod_lua multipart parser.                                                                         |
+| Service regsvc  | 5.0             | 139/SMB | netbios-ssn Samba smbd 3.x - 4.x | Service regsvc in Microsoft Windows 2000 systems is vulnerable to  denial of service caused by null deference.                                                 |
+| DOM-based XSS   | 6.0             | 80/HTTP | http://192.168.1.110/contact.php | XSS discoverd by running burpsuite scan shown possibility of XSS,  an attacker can tamper with the HTML response body an send it as client-side request(CSRF). |
 
 ### Exploitation
 _TODO: Fill out the details below. Include screenshots where possible._

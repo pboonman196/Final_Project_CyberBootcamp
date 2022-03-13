@@ -12,7 +12,7 @@ Nmap scan results for each machine reveal the below services and OS details:
 
 ```bash
 $ nmap -sV -sT -A 192.168.1.110
-  # TODO: Insert scan output
+  
 ```
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/nmap_scan_result.png)
 
@@ -33,9 +33,7 @@ This scan identifies the services below as potential points of entry:
   - 445/TCP - SMB
   - 111/TCP - RPCBind
 
-_TODO: Fill out the list below. Include severity, and CVE numbers, if possible._
-
-The following vulnerabilities were identified on each target:
+The following vulnerabilities were identified on target1 machine:
 
 | Vulnerabilities | Critical rating | Port    | Version/Website Page             | Description                                                                                                                                                    |
 |-----------------|-----------------|---------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -165,7 +165,7 @@ To get start with the flag4, we continue to search through the SQL database to f
 ```bash
 scp michael@192.168.1.110:/var/www/html/user_hash.txt
 ```
-***scp command is a secure copy (remote file copy)***
+***scp command is a secure copy (remote file copy) and can be done either from the host or fromt the remote machine, in the step above we have done using it from the host machine.
 
       - _TODO: Identify the exploit used_
       

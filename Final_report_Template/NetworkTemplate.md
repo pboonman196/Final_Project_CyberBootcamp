@@ -75,8 +75,27 @@ Based on the conversions: Statistics --> Conversations --> IPv4 --> Packets(High
 ## Illegal Downloads
 
 1. Find the following information about the machine with IP address `10.0.0.201`:
+    
     - MAC address
+      - 00:16:17:18:66:c8
     - Windows username
+      - elmer.blanco  
     - OS version
+      - BLANCO-DESKTOP
+    - Filter: `ip.src == 10.0.0.201 && kerberos.CNameString`
+    
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_network_template/illegal_download_hostname.png)      
 
-2. Which torrent file did the user download?
+2. Which torrent file did the user download? :
+     - Betty_Boop_Rythm_on_the_Reservation.avi.torrent
+     - Filter: `ip.addr == 10.0.0.201 && (http.request.uri contains ".torrent")`
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_network_template/file_name.png)
+
+# End of Operation
+      
+      
+     
+   
+
+  

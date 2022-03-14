@@ -92,10 +92,4 @@ Based on the conversions: Statistics --> Conversations --> IPv4 --> Packets(High
 
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_network_template/file_name.png)
 
-# End of Operation
-      
-      
-     
-   
-
-  
+# End of Summary

@@ -91,13 +91,22 @@ _TODO_:
 - Each alert above pertains to a specific vulnerability/exploit. Recall that alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, suggest a patch. E.g., implementing a blocklist is an effective tactic against brute-force attacks. It is not necessary to explain _how_ to implement each patch.
 
 The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
-- Vulnerability 1
+- Vulnerability 1: ssh login
   - **Patch**: 
-     - Disable the sshd.
-  - **Why It Works**: TODO: E.g., _`special-security-package` scans the system for viruses every day_
-- Vulnerability 2
-  - **Patch**: TODO: E.g., _install `special-security-package` with `apt-get`_
-  - **Why It Works**: TODO: E.g., _`special-security-package` scans the system for viruses every day_
-- Vulnerability 3
-  - **Patch**: TODO: E.g., _install `special-security-package` with `apt-get`_
-  - **Why It Works**: TODO: E.g., _`special-security-package` scans the system for viruses every day_
+     - Disable the sshd service.
+  - **Why It Works**: 
+     - This will prevent the non-root user from being accessed to ssh.
+- Vulnerability 2: Wordpress vulnerable site
+  - **Patch**: 
+     - Keep an up-to-date with the wordpress version.
+     - Unactive the old plugin that it may have known vulnerable to the public exploit.
+     - Keep PHP version up-to-date.
+  - **Why It Works**: 
+     - This is an excellent security practice since keeping up to date will patch any known vulnerabilities that may be discovered by pen-testers or black-hat hackers.
+- Vulnerability 3: Code Injection/Cross-site Scripting(XSS)
+  - **Patch**: 
+     - Fileter an input on arrival. At the point where user input is received, filter as strictly as possible based on what is expected or valid input.
+     - Encode data on output. At the point where user-controllable data is output in HTTP responses, encode the output to prevent it from being interpreted as active content. D        epending on the output context, this might require applying combinations of HTML, URL, JavaScript, and CSS encoding
+     - Use appropriate response headers. To prevent XSS in HTTP responses that aren't intended to contain any HTML or JavaScript, you can use the Content-Type and X-Content-            Type-Options headers to ensure that browsers interpret the responses in the way you intend.
+     - Content Security Policy. As a last line of defense, you can use Content Security Policy (CSP) to reduce the severity of any XSS vulnerabilities that still occur. > sf
+  - **Why It Works**: This will sanitize any input and prevent the code to be tampered with.

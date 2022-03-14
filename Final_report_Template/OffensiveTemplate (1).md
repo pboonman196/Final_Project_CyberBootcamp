@@ -72,7 +72,11 @@ Next we are going to uncover the flag2 in the following reproducing steps:
 
   - `flag2.txt`: flag2{fc3fd58dcdad9ab23faca6e9a36e581c}
 
-To get started, we go by enumerating
+To begin, we browse to the directory we discovered during the flag1 discovery phase. We also have insider knowledge that the flag2 are likely to be discovered in the /vendor directory, which we will verify shortly.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/exposed_directories_path.png)
+
+We can verify that there is the hint of the directory path we have to visit in the target1 machine. So we decided to enumerate the user of the target1.
  
   - Command used to enumerate user and check all vulnerable theme, outdated plugin on the wordpress site:
   

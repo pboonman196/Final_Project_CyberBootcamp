@@ -46,11 +46,11 @@ Traffic to these services should be carefully monitored. To this end, we have im
 #### Name of Alert 1
 _TODO: Replace `Alert 1` with the name of the alert._
 
-Alert 1 is implemented as follows:
-  - **Metric**: TODO
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+Excessive HTTP Errors is implemented as follows:
+  - **Metric**: WHEN count() GROUPED OVER top 5 'http.response.status_code' 
+  - **Threshold**: IS ABOVE 400
+  - **Vulnerability Mitigated**: Enumerating/Brute-Forcing
+  - **Reliability**: The alert is very accurate. If you measure by error codes 400 and above, you won't be able to see any normal or effective responses. More than 400 of the codes are client - server errors, which are more important to keep an eye on. Even when you take into account that these error codes are going off at a high rate.
 
 #### Name of Alert 2
 Alert 2 is implemented as follows:

@@ -109,7 +109,13 @@ We can verify that there is the hint of the directory path we have to visit in t
 ```
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/SSH_login.png)
 
-  
+Next, we are visitting the directory path from the information gained from the previous step and found the flag2 were in /var/www/flag2.txt
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag2.png)
+
+  - `flag3.txt`: flag3{afc01ab56b50591e7dccf93122770cd2}
+
+- To
 
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_

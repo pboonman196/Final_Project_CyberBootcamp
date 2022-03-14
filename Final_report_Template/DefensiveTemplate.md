@@ -71,12 +71,18 @@ HTTP Request Size Monitor is implemented as follows:
 
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_defensive_template/http_request_size_monitor_alert.png)
 
-#### Name of Alert 3
-Alert 3 is implemented as follows:
-  - **Metric**: TODO
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+#### CPU Usage Monitor
+CPU Usage Monitor is implemented as follows:
+  - **Metric**: 
+      - WHEN max() OF system.process.cpu.total.pct OVER all documents
+  - **Threshold**: 
+      - IS ABOVE 0.5 FOR THE LAST 5 minutes
+  - **Vulnerability Mitigated**: 
+      - Malicious service, unintended software such as malware, those are running in the background and consuming the CPU resources.    
+  - **Reliability**: 
+      - The alert is quite reliable. Even if there isn't a malicious software running, this may aid in determining where CPU utilization might be improved.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_defensive_template/cpu_usage_monitor_alert.png)
 
 _TODO Note: Explain at least 3 alerts. Add more if time allows._
 

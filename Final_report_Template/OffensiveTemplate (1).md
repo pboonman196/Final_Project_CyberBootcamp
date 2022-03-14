@@ -64,8 +64,16 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
 | -w      | (-wordlist [wordlist]) Path to wordlist.      |
 
    - we are now able go by the directory uncovered by gobuster and we eventually found the flag1 by just inspecting the service.html page.
+
+
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag1.png)
 
+Next we are going to uncover the flag2 in the following reproducing steps:
+
+  - `flag2.txt`: flag2{fc3fd58dcdad9ab23faca6e9a36e581c}
+
+To get started, we go by enumerating
+ 
   - Command used to enumerate user and check all vulnerable theme, outdated plugin on the wordpress site:
   
   ```bash
@@ -101,7 +109,7 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag1.png)
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_
-  - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
+  - `flag2.txt`: _TODO: Insert `f
     - **Exploit Used**
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_

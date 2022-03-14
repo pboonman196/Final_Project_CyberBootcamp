@@ -113,11 +113,34 @@ Next, we are visitting the directory path from the information gained from the p
 
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag2.png)
 
-  - `flag3.txt`: flag3{afc01ab56b50591e7dccf93122770cd2}
+     - `flag3.txt`: flag3{afc01ab56b50591e7dccf93122770cd2}
 
-- To
+To get flag3, we go by visitting the wp-config to gain the credential of mySql database.
 
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/sql_credential_in_wp-config.png)
+
+- Now we can access to mysql database using this command.
+
+  ```bash
+  mysql -h localhost -u root -p
+  ```
+## Command Explain 
+
+| Options | Description                                                |
+|---------|------------------------------------------------------------|
+| mysql   | To get access to the mysql database                        |
+| -h      | host name: Connect to the MySQL server on the given host.  |
+| -u      | The MySQL user name to user when connecting to the server. |
+| -p      | The password to use when connecting to the server.         |
+
+- Next we use the sql query to uncover the flag3 location.
+--> show databases; --> use wordpress --> show tables; --> describe wp_users; --> select post_content from wp_posts;
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/using_of_sql_query.png)
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discover_flag_3.png)
       - _TODO: Identify the exploit used_
+      
       - _TODO: Include the command run_
   - `flag2.txt`: _TODO: Insert `f
     - **Exploit Used**

@@ -180,11 +180,23 @@ $ john --wordlist=/usr/share/wordlists/rockyou.txt user_hash.txt
 
 - Now we can crack the hashes of user steven, that has been identified as "pink84."
 
--
-      - _TODO: Identify the exploit used_
-      
-      - _TODO: Include the command run_
-  - `flag2.txt`: _TODO: Insert `f
-    - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
+- Next, we ssh into steven using that password we cracked earlier.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/ssh_to_steven.png)
+
+- We gained access to Steven's workstation successfully, however it appears that Steven did not have root privileges.
+
+- Next we using this command to elevate the root priviledge.
+
+```bash
+sudo /usr/bin/python; import os; os.system('/bin/bash')
+```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/steven_priv_escalation.png)
+
+- Next, the flag4 can be easily discover under the root directory.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/flag4.png)
+
+So now we are successfully exploited the target1 machine!
+
+# End of Operation

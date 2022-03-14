@@ -64,17 +64,29 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
 | -w      | (-wordlist [wordlist]) Path to wordlist.      |
 
    - we are now able go by the directory uncovered by gobuster and we eventually found the flag1 by just inspecting the service.html page.
+
+
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag1.png)
 
+Next we are going to uncover the flag2 in the following reproducing steps:
+
+  - `flag2.txt`: flag2{fc3fd58dcdad9ab23faca6e9a36e581c}
+
+To begin, we browse to the directory we discovered during the flag1 discovery phase. We also have insider knowledge that the flag2 are likely to be discovered in the /vendor directory, which we will verify shortly.
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/exposed_directories_path.png)
+
+We can verify that there is the hint of the directory path we have to visit in the target1 machine. So we decided to enumerate the user of the target1.
+ 
   - Command used to enumerate user and check all vulnerable theme, outdated plugin on the wordpress site:
   
   ```bash
   $ wpscan --url http://192.168.1.110/wordpress --rua --enumerate u
   ```
   - After running this command, we are can see that this wordpress site username is exposed to the public.
-![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/Screenshot%20(234).png)  
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/wpscan_result.png)  
 
-  - Since the target1 is vulnerable to ssh-bruteforcing, we can use hydra to run the password list against the username to login, in this case we will try with michael
+  - Since the target1 is vulnerable to ssh-bruteforcing, we can use hydra to run the password list against the username we found to login, in this case we will try with michael
 
 ```bash
   $ hydra -l michael -P /usr/share/wordlists/rockyou.txt 192.168.1.110 -t 4 ssh
@@ -97,11 +109,17 @@ The target1 has been discovered to be vulnerable to exploit in a variety of ways
 ```
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/SSH_login.png)
 
-  
-![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag1.png)
+Next, we are visitting the directory path from the information gained from the previous step and found the flag2 were in /var/www/flag2.txt
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag2.png)
+
+  - `flag3.txt`: flag3{afc01ab56b50591e7dccf93122770cd2}
+
+- To
+
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_
-  - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
+  - `flag2.txt`: _TODO: Insert `f
     - **Exploit Used**
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_

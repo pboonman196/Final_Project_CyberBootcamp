@@ -8,23 +8,34 @@
 - Suggestions for Going Further
 
 ### Network Topology
-_TODO: Fill out the information below._
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_defensive_template/Picture1.png)
 
 The following machines were identified on the network:
-- Name of VM 1
-  - **Operating System**:
-  - **Purpose**:
-  - **IP Address**:
-- Name of VM 2
-  - **Operating System**:
-  - **Purpose**:
-  - **IP Address**:
-- Etc.
+
+- Network:
+  - Adress Range: 192.168.1.0/24
+  - Netmask: 255.255.255.0
+  - Gateway: 10.0.0.1
+- Target1
+  - **Operating System**: Linux
+  - **Purpose**: Vulnerable machine
+  - **IP Address**: 192.168.1.110
+- Target2
+  - **Operating System**: Linux
+  - **Purpose**: Vulnerable machine
+  - **IP Address**: 192.168.1.115
+- ELK
+  - **Operating System**: Linux
+  - **Purpose**: Monitoring machine(Kibana)
+  - **IP Address**: 192.168.1.100
+- Capstone
+  - **Operating System**: Linux
+  - **Purpose**: Filebeat and Metricbeat are installed and will forward logs to the ELK machine.
+  - **IP Address**: 192.168.1.105
 
 ### Description of Targets
-_TODO: Answer the questions below._
 
-The target of this attack was: `Target 1` (TODO: IP Address).
+The target of this attack was: `Target 1` (192.168.1.110).
 
 Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
 

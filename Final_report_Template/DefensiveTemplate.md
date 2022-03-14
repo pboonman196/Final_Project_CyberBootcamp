@@ -43,7 +43,7 @@ Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are pos
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
-#### Name of Alert 1
+#### Excessive HTTP Errors
 
 Excessive HTTP Errors is implemented as follows:
   - **Metric**: 
@@ -56,12 +56,20 @@ Excessive HTTP Errors is implemented as follows:
       - The alert is very accurate. If you measure by error codes 400 and above, you won't be able to see any normal or effective responses. More than 400 of the         codes           are client - server errors, which are more important to keep an eye on. Even when you take into account that these error codes are going off at a high rate.
 
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_defensive_template/excessive_http_errors_alert.png)
-#### Name of Alert 2
-Alert 2 is implemented as follows:
-  - **Metric**: TODO
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+
+#### HTTP Request Size Monitor
+
+HTTP Request Size Monitor is implemented as follows:
+  - **Metric**: 
+      - WHEN sum() of http.request.bytes OVER all documents 
+  - **Threshold**: 
+      - IS ABOVE 3500 FOR THE LAST 1 minute   
+  - **Vulnerability Mitigated**: 
+      - Command injection, Cross-site scripting(XSS), Denial of Servive(DDoS)  
+  - **Reliability**: 
+      - Some alerts might be false positives. It has a decent level of reliability. An HTTP request that isn't malicious or has a lot of traffic that isn't malicious could be           very big. 
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot_defensive_template/http_request_size_monitor_alert.png)
 
 #### Name of Alert 3
 Alert 3 is implemented as follows:

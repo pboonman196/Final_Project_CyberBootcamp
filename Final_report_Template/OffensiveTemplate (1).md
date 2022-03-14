@@ -84,9 +84,9 @@ We can verify that there is the hint of the directory path we have to visit in t
   $ wpscan --url http://192.168.1.110/wordpress --rua --enumerate u
   ```
   - After running this command, we are can see that this wordpress site username is exposed to the public.
-![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/Screenshot%20(234).png)  
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/wpscan_result.png)  
 
-  - Since the target1 is vulnerable to ssh-bruteforcing, we can use hydra to run the password list against the username to login, in this case we will try with michael
+  - Since the target1 is vulnerable to ssh-bruteforcing, we can use hydra to run the password list against the username we found to login, in this case we will try with michael
 
 ```bash
   $ hydra -l michael -P /usr/share/wordlists/rockyou.txt 192.168.1.110 -t 4 ssh
@@ -110,7 +110,7 @@ We can verify that there is the hint of the directory path we have to visit in t
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/SSH_login.png)
 
   
-![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discovered_flag1.png)
+
       - _TODO: Identify the exploit used_
       - _TODO: Include the command run_
   - `flag2.txt`: _TODO: Insert `f

